@@ -3,7 +3,7 @@ import { JSX } from 'react/jsx-runtime';
 
 interface Props {
   layers: Record<string, JSX.Element>;
-  selectedZone: string;               // Thêm prop vùng đang chọn
+  selectedZone: string;               
   onRegionClick: (index: number) => void;
 }
 

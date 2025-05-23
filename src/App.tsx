@@ -17,30 +17,24 @@ const defaultMaterials = {
 
 const App: React.FC = () => {
   const [selectedZone, setSelectedZone] = useState<string>('wall1');
-  // Lưu vật liệu (SVG) cho từng vùng
   const [zoneMaterials, setZoneMaterials] = useState<Record<string, JSX.Element>>(defaultMaterials);
 
   const handleRegionClick = (index: number) => {
     setSelectedZone(zoneNames[index]);
   };
 
-  // Khi chọn vật liệu cho vùng đang chọn
   const handleMaterialSelect = (materialKey: string) => {
-    // materialKey có thể là 'svg-wall1', 'svg-floor'...
-    // Ta cần map materialKey về svg element, giả sử bạn có map như sau:
     const materialMap: Record<string, JSX.Element> = {
       'svg-wall1': wall1Svg,
       'svg-wall2': wall2Svg,
       'svg-ceiling': ceilSvg,
       'svg-floor': floorSvg,
       'svg-curtain': curtainSvg,
-      // Thêm nếu có vật liệu khác
     };
 
     const selectedMaterialSvg = materialMap[materialKey];
     if (!selectedMaterialSvg) return;
 
-    // Cập nhật vật liệu cho vùng đang chọn
     setZoneMaterials((prev) => ({
       ...prev,
       [selectedZone]: selectedMaterialSvg,
